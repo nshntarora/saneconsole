@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/nshntarora/saneconsole/issues"
   },
-  "homepage": "https://github.com/nshntarora/saneconsole#readme"
+  "homepage": "https://github.com/nshntarora/saneconsole#readme",
+  "dependencies": {
+    "jsonfile": "3.0.1"
+  }
 }

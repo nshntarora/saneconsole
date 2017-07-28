@@ -1,3 +1,4 @@
+const fileUtils = require('./utils');
 
 const isDisabled = (process.env.NODE_ENV === 'production');
 
@@ -37,6 +38,7 @@ const writeToFile = function(msgs, metaObject) {
     info: msgs,
     meta: metaObject
   };
+  fileUtils.write(logObj);
 }
 
 const c = function(metaObject) {
