@@ -26,7 +26,7 @@ const prepMsgs = function(msgs, args, type) {
   }
 }
 
-const c = {
+module.exports = {
   log: function() {
     let msgs = [];
     prepMsgs(msgs, arguments, 'log');
@@ -46,7 +46,3 @@ const c = {
       defaultLogger.apply(console, msgs);
   }
 };
-
-c.log('hello');
-c.error('hello');
-c.warn('hello');
