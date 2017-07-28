@@ -1,0 +1,24 @@
+{
+  "name": "saneconsole",
+  "version": "0.1.0",
+  "description": "sane console.log for your side projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nshntarora/saneconsole.git"
+  },
+  "keywords": [
+    "console",
+    "logging",
+    "log"
+  ],
+  "author": "Nishant Arora (@nshntarora)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nshntarora/saneconsole/issues"
+  },
+  "homepage": "https://github.com/nshntarora/saneconsole#readme"
+}
