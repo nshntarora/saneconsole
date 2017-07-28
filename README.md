@@ -19,7 +19,6 @@ First, you'll have to install the package.
 
 npm install saneconsole
 
-
 ```
 
 Then, here's how to use it in one of your files
@@ -32,7 +31,6 @@ const meta = { }
 // It could be the user's id or the entire user object
 const console = saneconsole(meta);
 
-
 ```
 
 You can also declare it in the global scope, using `global` on Node and `window.console` on the client.
@@ -43,7 +41,6 @@ It also adds a time stamp, and a prefix to the log.
 
 console.log("Hi! I'm Nishant")
 
-
 ```
 
 would be printed as
@@ -51,7 +48,6 @@ would be printed as
 ```
 
 DEBUG: [ 2017-07-28T19:20:39.733Z ] :  Hi! I'm Nishant
-
 
 ```
 
