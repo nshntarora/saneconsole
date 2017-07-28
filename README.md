@@ -16,27 +16,43 @@ Using it is simple.
 First, you'll have to install the package.
 
 ```
+
 npm install saneconsole
+
+
 ```
 
 Then, here's how to use it in one of your files
 
 ```
+
 const saneconsole = require('saneconsole');
 const meta = { }
-// Object or String that gets added to the meta key in every log object 
+// Set meta to any Object or String you'd like to be logged everytime.
+// It could be the user's id or the entire user object
 const console = saneconsole(meta);
+
+
 ```
 
 You can also declare it in the global scope, using `global` on Node and `window.console` on the client.
 
 It also adds a time stamp, and a prefix to the log.
+
 ```
+
 console.log("Hi! I'm Nishant")
+
+
 ```
+
 would be printed as
+
 ```
+
 DEBUG: [ 2017-07-28T19:20:39.733Z ] :  Hi! I'm Nishant
+
+
 ```
 
 As of now saneconsole only supports `console.log`, `console.warn`, and `console.error`
@@ -44,5 +60,13 @@ As of now saneconsole only supports `console.log`, `console.warn`, and `console.
 **No logs are printed on production.** You can finally say goodbye to that `no-console` rule in your eslint config.
 
 All logs are found in the `saneconsole.log` file in the root of your project. They are just a series of JSON objects. You could easily convert them into an array of JSON objects and make them searchable.
+
+Here is the object that gets added to the file:
+
+```
+
+{"timestamp":"2017-07-28T19:50:53.223Z","info":["Hi! I'm Nishant"],"meta":"123"}
+
+```
 
 A dashboard to view and search these logs coming up after the next boring class I attend.
