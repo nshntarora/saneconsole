@@ -7,11 +7,17 @@ const warningLogger = console.warn;
 
 const timestamp = function() {
   var date = new Date(),
-    str = date.toUTCString();
+    str = date.toISOString();
   return str;
 }
 
-const prepMsgs = function(msgs, args, type) {
+const createMsgArray = function(msgs, args) {
+  while(args.length) {
+      msgs.push([].shift.call(args));
+  }
+}
+
+const prepMsgs = function(msgs, type) {
   let prefixString = '[ '+ timestamp() +' ] : ';
   let suffixString = '';
   if (type === 'error') {
@@ -21,28 +27,50 @@ const prepMsgs = function(msgs, args, type) {
   } else {
     prefixString = 'DEBUG: ' + prefixString
   }
-  while(args.length) {
-      msgs.push(prefixString + [].shift.call(args) + suffixString);
-  }
+  msgs.splice(0, 0, prefixString);
+  msgs.push(suffixString);
 }
 
-module.exports = {
-  log: function() {
-    let msgs = [];
-    prepMsgs(msgs, arguments, 'log');
-    if (!isDisabled)
-      defaultLogger.apply(console, msgs);
-  },
-  error: function() {
-    let msgs = [];
-    prepMsgs(msgs, arguments, 'error');
-    if (!isDisabled)
-      defaultLogger.apply(console, msgs);
-  },
-  warn: function() {
-    let msgs = [];
-    prepMsgs(msgs, arguments, 'warn');
-    if (!isDisabled)
-      defaultLogger.apply(console, msgs);
+const writeToFile = function(msgs, metaObject) {
+  const logObj = {
+    timestamp: timestamp(),
+    info: msgs,
+    meta: metaObject
+  };
+}
+
+const c = function(metaObject) {
+  if (typeof metaObject === 'object' || typeof metaObject === 'string') {
+    return {
+      log: function() {
+        let msgs = [];
+        createMsgArray(msgs, arguments);
+        writeToFile(msgs, metaObject);
+        prepMsgs(msgs, 'log');
+        if (!isDisabled) {
+          defaultLogger.apply(console, msgs);
+        }
+      },
+      error: function() {
+        let msgs = [];
+        createMsgArray(msgs, arguments);
+        writeToFile(msgs, metaObject);
+        prepMsgs(msgs, 'log');
+        if (!isDisabled)
+          defaultLogger.apply(console, msgs);
+      },
+      warn: function() {
+        let msgs = [];
+        createMsgArray(msgs, arguments);
+        writeToFile(msgs, metaObject);
+        prepMsgs(msgs, 'log');
+        if (!isDisabled)
+          defaultLogger.apply(console, msgs);
+      }
+    }
+  } else {
+    throw new Error('NOTOBJECTSTRING: The meta info should be an object or a string');
   }
 };
+
+module.exports = c;

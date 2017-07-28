@@ -1,3 +1,4 @@
-const console = require('./index.js');
+const saneconsole = require('./index.js');
+const console = saneconsole('helo');
 
-console.log('hellow');
+console.log('hellow', 'hi', 'how');
