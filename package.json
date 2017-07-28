@@ -1,7 +1,7 @@
 {
   "name": "saneconsole",
   "version": "0.1.0",
-  "description": "sane console.log for your side projects",
+  "description": "a little more than console.log()",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
