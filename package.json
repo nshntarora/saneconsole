@@ -1,6 +1,6 @@
 {
   "name": "saneconsole",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "a little more than console.log()",
   "main": "index.js",
   "scripts": {
