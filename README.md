@@ -25,12 +25,34 @@ Then, here's how to use it in one of your files
 
 ```
 
-const saneconsole = require('saneconsole');
-const meta = { }
+var saneconsole = require('saneconsole');
+var meta = { }
 // Set meta to any Object or String you'd like to be logged everytime.
 // It could be the user's id or the entire user object
-const console = saneconsole(meta);
+var console = saneconsole(meta);
 
+```
+
+**NOTE: Logging to the file does not work on the client as the `fs` module isn't avaible there.**
+
+In order to use it on the web client, you will have to pass another boolean param when initializing the package.
+
+```
+var console = saneconsole(meta);
+```
+
+will become
+
+```
+var console = saneconsole(meta, true);
+```
+
+And add the below object to your webpack config
+
+```
+node: {
+  fs: "empty"
+}
 ```
 
 You can also declare it in the global scope, using `global` on Node and `window.console` on the client.

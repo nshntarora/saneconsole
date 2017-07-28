@@ -1,7 +1,7 @@
-const path = require('path');
-const jsonfile = require('jsonfile');
+var path = require('path');
+var jsonfile = require('jsonfile');
 
-const file = path.resolve(__dirname, '../../saneconsole.log');
+var file = path.resolve(__dirname, '../../saneconsole.log');
 
 module.exports = {
   write: function(obj) {
